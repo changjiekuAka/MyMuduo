@@ -1,0 +1,1 @@
+/usr/bin/g++ -fPIC -g  -shared -Wl,-soname,libmymuduo.so -o libmymuduo.so CMakeFiles/mymuduo.dir/logger.cc.o 
