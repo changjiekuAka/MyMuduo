@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.0)
 
 project(mymuduo)
 
-set(LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib)
+set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 
 set(CMAKE_BUILD_TYPE "Debug")
 

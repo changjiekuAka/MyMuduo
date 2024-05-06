@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/kuaka/myMuduo/Timestamp.h
+time.h
+-
+string
+-
+
+/home/kuaka/myMuduo/logger.cc
+logger.h
+/home/kuaka/myMuduo/logger.h
+Timestamp.h
+/home/kuaka/myMuduo/Timestamp.h
+
+/home/kuaka/myMuduo/logger.h
+noncopyable.h
+/home/kuaka/myMuduo/noncopyable.h
+string
+-
+iostream
+-
+
+/home/kuaka/myMuduo/noncopyable.h
+

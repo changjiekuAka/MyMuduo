@@ -13,5 +13,5 @@ public:
     noncopyable& operator=(const noncopyable& ) = delete;
 protected:
     noncopyable() = default;
-    noncopyable() = default;
+    ~noncopyable() = default;
 };
