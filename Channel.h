@@ -21,12 +21,12 @@ class Channel : noncopyable
 {
 public:
     using EventCallback = std::function<void()>;
-    using ReadEventCallback = std::function<void(TimeStamp*)>;
+    using ReadEventCallback = std::function<void(TimeStamp)>;
 
     Channel(EventLoop* loop,int fd);
     ~Channel();
 
-    void handleEvent(TimeStamp* Receivetime);
+    void handleEvent(TimeStamp Receivetime);
     void setReadCallback(ReadEventCallback cb) { readCallback_ = std::move(cb); }
     void setWriteCallback(EventCallback cb) { writeCallback_ = std::move(cb); }
     void setCloseCallback(EventCallback cb) { closeCallback_ = std::move(cb); }
@@ -59,6 +59,7 @@ private:
     void update();
     void handleEventWithGuard(TimeStamp receiveTime);
 
+    // EPOLLIN EPOLLERR EPOLLOUT EPOLLHUP EPOLLPRI
     static const int kNoneEvent;
     static const int kReadEvent;
     static const int kWriteEvent;

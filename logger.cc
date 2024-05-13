@@ -8,7 +8,7 @@ Logger& Logger::GetInstance()
     return instance;
 }
 
-void Logger::SetLoglevel(int level)
+void Logger::SetLogLevel(int level)
 {
     m_loglevel = level;
 }
