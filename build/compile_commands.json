@@ -6,6 +6,16 @@
 },
 {
   "directory": "/home/kuaka/myMuduo/build",
+  "command": "/usr/bin/g++  -Dmymuduo_EXPORTS  -g -fPIC   -o CMakeFiles/mymuduo.dir/DefaultPoller.cc.o -c /home/kuaka/myMuduo/DefaultPoller.cc",
+  "file": "/home/kuaka/myMuduo/DefaultPoller.cc"
+},
+{
+  "directory": "/home/kuaka/myMuduo/build",
+  "command": "/usr/bin/g++  -Dmymuduo_EXPORTS  -g -fPIC   -o CMakeFiles/mymuduo.dir/EpollPoller.cc.o -c /home/kuaka/myMuduo/EpollPoller.cc",
+  "file": "/home/kuaka/myMuduo/EpollPoller.cc"
+},
+{
+  "directory": "/home/kuaka/myMuduo/build",
   "command": "/usr/bin/g++  -Dmymuduo_EXPORTS  -g -fPIC   -o CMakeFiles/mymuduo.dir/EventLoop.cc.o -c /home/kuaka/myMuduo/EventLoop.cc",
   "file": "/home/kuaka/myMuduo/EventLoop.cc"
 },
