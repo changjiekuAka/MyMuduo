@@ -170,6 +170,33 @@ Channel.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/Channel.cc.s
 .PHONY : Channel.cc.s
 
+CurrentThread.o: CurrentThread.cc.o
+
+.PHONY : CurrentThread.o
+
+# target to build an object file
+CurrentThread.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/CurrentThread.cc.o
+.PHONY : CurrentThread.cc.o
+
+CurrentThread.i: CurrentThread.cc.i
+
+.PHONY : CurrentThread.i
+
+# target to preprocess a source file
+CurrentThread.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/CurrentThread.cc.i
+.PHONY : CurrentThread.cc.i
+
+CurrentThread.s: CurrentThread.cc.s
+
+.PHONY : CurrentThread.s
+
+# target to generate assembly for a file
+CurrentThread.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/CurrentThread.cc.s
+.PHONY : CurrentThread.cc.s
+
 DefaultPoller.o: DefaultPoller.cc.o
 
 .PHONY : DefaultPoller.o
@@ -398,6 +425,9 @@ help:
 	@echo "... Channel.o"
 	@echo "... Channel.i"
 	@echo "... Channel.s"
+	@echo "... CurrentThread.o"
+	@echo "... CurrentThread.i"
+	@echo "... CurrentThread.s"
 	@echo "... DefaultPoller.o"
 	@echo "... DefaultPoller.i"
 	@echo "... DefaultPoller.s"

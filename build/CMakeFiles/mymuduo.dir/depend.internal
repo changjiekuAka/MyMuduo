@@ -14,7 +14,13 @@ CMakeFiles/mymuduo.dir/DefaultPoller.cc.o
  /home/kuaka/myMuduo/Timestamp.h
  /home/kuaka/myMuduo/noncopyable.h
 CMakeFiles/mymuduo.dir/EpollPoller.cc.o
+ /home/kuaka/myMuduo/Channel.h
  /home/kuaka/myMuduo/EpollPoller.cc
+ /home/kuaka/myMuduo/EpollPoller.h
+ /home/kuaka/myMuduo/Poller.h
+ /home/kuaka/myMuduo/Timestamp.h
+ /home/kuaka/myMuduo/logger.h
+ /home/kuaka/myMuduo/noncopyable.h
 CMakeFiles/mymuduo.dir/EventLoop.cc.o
  /home/kuaka/myMuduo/EventLoop.cc
 CMakeFiles/mymuduo.dir/InetAddress.cc.o

@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "../lib/libmymuduo.pdb"
   "../lib/libmymuduo.so"
   "CMakeFiles/mymuduo.dir/Channel.cc.o"
+  "CMakeFiles/mymuduo.dir/CurrentThread.cc.o"
   "CMakeFiles/mymuduo.dir/DefaultPoller.cc.o"
   "CMakeFiles/mymuduo.dir/EpollPoller.cc.o"
   "CMakeFiles/mymuduo.dir/EventLoop.cc.o"
