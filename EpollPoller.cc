@@ -88,7 +88,7 @@ void EpollPoller::updateChannel(Channel* channel)
         assert(channel->index() == kAdded);
         
         // 更新channel时，发现channel没有关心的事件，判定为注销该channel
-        // channelMap中并没有删除该记录
+        // channelMap中并没有删除该记录,设置状态为kDeleted
         if(channel->isNoneEvent())
         {
             update(EPOLL_CTL_DEL,channel);

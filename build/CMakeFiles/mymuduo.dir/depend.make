@@ -3,10 +3,14 @@
 
 CMakeFiles/mymuduo.dir/Channel.cc.o: ../Channel.cc
 CMakeFiles/mymuduo.dir/Channel.cc.o: ../Channel.h
+CMakeFiles/mymuduo.dir/Channel.cc.o: ../CurrentThread.h
 CMakeFiles/mymuduo.dir/Channel.cc.o: ../EventLoop.h
 CMakeFiles/mymuduo.dir/Channel.cc.o: ../Timestamp.h
 CMakeFiles/mymuduo.dir/Channel.cc.o: ../logger.h
 CMakeFiles/mymuduo.dir/Channel.cc.o: ../noncopyable.h
+
+CMakeFiles/mymuduo.dir/CurrentThread.cc.o: ../CurrentThread.cc
+CMakeFiles/mymuduo.dir/CurrentThread.cc.o: ../CurrentThread.h
 
 CMakeFiles/mymuduo.dir/DefaultPoller.cc.o: ../DefaultPoller.cc
 CMakeFiles/mymuduo.dir/DefaultPoller.cc.o: ../Poller.h

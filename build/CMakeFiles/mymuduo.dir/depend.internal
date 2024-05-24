@@ -4,10 +4,14 @@
 CMakeFiles/mymuduo.dir/Channel.cc.o
  /home/kuaka/myMuduo/Channel.cc
  /home/kuaka/myMuduo/Channel.h
+ /home/kuaka/myMuduo/CurrentThread.h
  /home/kuaka/myMuduo/EventLoop.h
  /home/kuaka/myMuduo/Timestamp.h
  /home/kuaka/myMuduo/logger.h
  /home/kuaka/myMuduo/noncopyable.h
+CMakeFiles/mymuduo.dir/CurrentThread.cc.o
+ /home/kuaka/myMuduo/CurrentThread.cc
+ /home/kuaka/myMuduo/CurrentThread.h
 CMakeFiles/mymuduo.dir/DefaultPoller.cc.o
  /home/kuaka/myMuduo/DefaultPoller.cc
  /home/kuaka/myMuduo/Poller.h
