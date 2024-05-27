@@ -18,6 +18,10 @@ class EventLoop : noncopyable
 public:
     using Functor = std::function<void()>;
 
+    EventLoop();
+    ~EventLoop();
+
+
     void loop();
 
     void quit();
