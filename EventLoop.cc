@@ -5,6 +5,7 @@
 
 #include <sys/eventfd.h>
 #include <unistd.h>
+#include <assert.h>
 
 // 一个线程只能有一个EventLoop实例
 __thread EventLoop *t_loopInThisThread = nullptr;
@@ -28,8 +29,7 @@ EventLoop::EventLoop()
     threadId_(CurrentThread::tid()),
     poller_(Poller::newDefaultPoller(this)),
     wakeupfd_(createEventfd()),
-    wakeupChannel_(new Channel(this,wakeupfd_)),
-    currentActiveChannel_(nullptr)
+    wakeupChannel_(new Channel(this,wakeupfd_))
 {
     LOG_DEBUG("EventLoop create %p in thread %d",this,threadId_);
     if(t_loopInThisThread)
@@ -101,4 +101,72 @@ void EventLoop::loop()
         */
         doPendingFunctors();
     }
+}
+
+void EventLoop::quit()
+{
+    quit_ = true;
+
+    /*
+        调用该方法的线程有两种
+        该EventLoop的本来的线程        不属于该EventLoop的其他线程
+
+        比如在一个subloop中(worker)调用了mainLoop(IO)的quit
+        会让mainLoop从poll的阻塞等待中跳出，最后循环到检查quit_处结束循环   
+    */
+    if(!isInLoopThread())
+    {
+        wakeup();
+    }
+}
+
+void EventLoop::updateChannel(Channel* channel)
+{
+    assert(channel->ownerLoop() == this);
+    poller_->updateChannel(channel);
+}
+
+void EventLoop::removeChannel(Channel* channel)
+{
+    assert(channel->ownerLoop() == this);
+    poller_->removeChannel(channel);
+}
+
+bool EventLoop::hasChannel(Channel* channel)
+{
+    assert(channel->ownerLoop() == this);
+    return poller_->hasChannel(channel);
+}
+
+void EventLoop::runInLoop(Functor cb)
+{
+    if(isInLoopThread()) // 在当前的loop线程中，执行cb
+    {
+        cb(); 
+    }
+    else // 不在当前线程，说明一个线程A调用线程B的runInLoop，线程B需要被唤醒，为什么线程A会调用到？待解决
+    {
+        queueInLoop(std::move(cb));
+    }
+}
+
+void EventLoop::queueInLoop(Functor cb)
+{
+    {   // 可能会有多个线程，会对pendingFunctors_操作
+        std::unique_lock<std::mutex> lock(mutex_);
+        pendingFunctors_.emplace_back(cb);
+    }
+
+    /*
+        这里的是有两种情况需要唤醒loop所属的线程
+
+        一：调用该函数的线程A不是loop所属的线程B，表示：非loop线程A唤醒线程B去执行回调操作
+        二：线程B正在执行回调函数，线程B或者线程A需要唤醒线程B，让线程B在执行完回调操作后，调用poll函数
+            不会阻塞，而是去执行新增的回调操作
+    */
+    if(!isInLoopThread() || callingPendingFunctors_)
+    {
+        wakeup();
+    }
+
 }
