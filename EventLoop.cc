@@ -168,5 +168,21 @@ void EventLoop::queueInLoop(Functor cb)
     {
         wakeup();
     }
+}
 
+void EventLoop::doPendingFunctors()
+{
+    std::vector<Functor> functors;
+    callingPendingFunctors_ = true;
+
+    {
+        std::unique_lock<std::mutex> lock(mutex_);
+        functors.swap(pendingFunctors_);
+    }
+
+    for(const Functor& func : functors)
+    {
+        func();
+    }
+    callingPendingFunctors_ = false;
 }
