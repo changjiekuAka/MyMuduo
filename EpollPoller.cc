@@ -5,9 +5,9 @@
 #include <assert.h>
 #include <string.h>
 
-const int kNew = -1;
-const int kAdded = 1;
-const int kDeleted = 2;
+const int kNew = -1; // 未注册到channels_表，也未注册到Epoll
+const int kAdded = 1; // 已注册到channels_表，已注册到Epoll
+const int kDeleted = 2; // 已注册到channels_表，已从Epoll中删除
 
 
 EpollPoller::EpollPoller(EventLoop* loop)
