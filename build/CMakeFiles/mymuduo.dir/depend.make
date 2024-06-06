@@ -45,6 +45,11 @@ CMakeFiles/mymuduo.dir/Poller.cc.o: ../noncopyable.h
 
 CMakeFiles/mymuduo.dir/TcpServer.cc.o: ../TcpServer.cc
 
+CMakeFiles/mymuduo.dir/Thread.cc.o: ../CurrentThread.h
+CMakeFiles/mymuduo.dir/Thread.cc.o: ../Thread.cc
+CMakeFiles/mymuduo.dir/Thread.cc.o: ../Thread.h
+CMakeFiles/mymuduo.dir/Thread.cc.o: ../noncopyable.h
+
 CMakeFiles/mymuduo.dir/Timestamp.cc.o: ../Timestamp.cc
 CMakeFiles/mymuduo.dir/Timestamp.cc.o: ../Timestamp.h
 
