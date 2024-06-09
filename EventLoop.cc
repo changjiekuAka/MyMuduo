@@ -87,7 +87,7 @@ void EventLoop::loop()
         
         for(Channel* channel:activeChannels_)
         {
-            // handleEvent函数是根据发生的事件类型，来调用事先预设好的对应事件的回调操作
+            // handleEvent函数是根据发生的事件类型(EPOLLIN EPOLLOUT)，来调用事先预设好的对应事件的回调操作
             channel->handleEvent(pollReturnTime_);
         }
 
@@ -101,6 +101,32 @@ void EventLoop::loop()
         */
         doPendingFunctors();
     }
+}
+// 执行委派的回调函数
+void EventLoop::doPendingFunctors()
+{
+    std::vector<Functor> functors;
+    callingPendingFunctors_ = true;
+
+    /* 
+        这里使用一个临时变量暂存这些需要执行的回调函数的目的：
+            这个函数本该是一个逐个执行存储的回调操作的函数，也就意味着他的逻辑应该是执行一个
+        从中删一个，那么如果现在需要执行的回调操作比较多，一直占用锁(对这个存储容器操作的会有多个线程)
+        可看下面的queueInLoop函数，锁一直被占用那mainLoop想要委派线程执行函数，那么就会在添加函数的哪里
+        阻塞住
+
+        这里使用swap函数，直接将存储容器中所有的函数对象取出来，mainLoop就不会存在阻塞的情况了
+    */
+    {
+        std::unique_lock<std::mutex> lock(mutex_);
+        functors.swap(pendingFunctors_);
+    }
+
+    for(const Functor& func : functors)
+    {
+        func();
+    }
+    callingPendingFunctors_ = false;
 }
 
 void EventLoop::quit()
@@ -117,6 +143,17 @@ void EventLoop::quit()
     if(!isInLoopThread())
     {
         wakeup();
+    }
+}
+
+// 往wakeupfd中写入数据，wakeupfd的读事件就绪
+void EventLoop::wakeup()
+{
+    uint64_t one = 1;
+    ssize_t n = write(wakeupfd_,&one,sizeof one);
+    if(n != sizeof one)
+    {
+        LOG_ERROR("EventLoop::wakeup() writes %d bytes instead of 8",n);
     }
 }
 
@@ -168,21 +205,4 @@ void EventLoop::queueInLoop(Functor cb)
     {
         wakeup();
     }
-}
-
-void EventLoop::doPendingFunctors()
-{
-    std::vector<Functor> functors;
-    callingPendingFunctors_ = true;
-
-    {
-        std::unique_lock<std::mutex> lock(mutex_);
-        functors.swap(pendingFunctors_);
-    }
-
-    for(const Functor& func : functors)
-    {
-        func();
-    }
-    callingPendingFunctors_ = false;
 }

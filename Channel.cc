@@ -44,14 +44,14 @@ void Channel::update()
 {
   addedToLoop_ = true;
   // add code。。。
-  // loop_->updateChannel(this);
+  loop_->updateChannel(this);
 }
 
 void Channel::remove()
 {
   addedToLoop_ = false;
   // add code ...
-  // loop_->removeChannel(this);
+  loop_->removeChannel(this);
 }
 
 void Channel::handleEvent(TimeStamp receivetime)

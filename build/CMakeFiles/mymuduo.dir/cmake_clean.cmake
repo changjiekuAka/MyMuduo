@@ -6,6 +6,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/mymuduo.dir/DefaultPoller.cc.o"
   "CMakeFiles/mymuduo.dir/EpollPoller.cc.o"
   "CMakeFiles/mymuduo.dir/EventLoop.cc.o"
+  "CMakeFiles/mymuduo.dir/EventLoopThread.cc.o"
   "CMakeFiles/mymuduo.dir/InetAddress.cc.o"
   "CMakeFiles/mymuduo.dir/Poller.cc.o"
   "CMakeFiles/mymuduo.dir/TcpServer.cc.o"
