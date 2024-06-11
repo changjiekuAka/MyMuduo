@@ -157,6 +157,7 @@ void EventLoop::wakeup()
     }
 }
 
+// channel会调用这些函数，让EventLoop去操作poller
 void EventLoop::updateChannel(Channel* channel)
 {
     assert(channel->ownerLoop() == this);

@@ -42,7 +42,7 @@ void EventLoopThread::threadFunc()
 {
     EventLoop loop; //  创建一个独立的EventLoop，和上面的线程是一一对应的，One loop per thread
 
-    if(callback_)
+    if(callback_) // 执行线程初始化回调操作
     {
         callback_(&loop);
     }
