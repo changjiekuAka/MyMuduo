@@ -30,7 +30,7 @@ EventLoop* EventLoopThread::startLoop()
         std::unique_lock<std::mutex> lock(mutex_);
         while(loop_ == nullptr)
         {
-            cond_.wait(lock); //待底层线程创建了一个EventLoop后，就可以继续执行了，也表明此时One loop per thread 形成了
+            cond_.wait(lock); //  待底层线程创建了一个EventLoop后，就可以继续执行了，也表明此时One loop per thread 形成了
         }
         loop = loop_;
     }
