@@ -143,6 +143,33 @@ mymuduo/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/build
 .PHONY : mymuduo/fast
 
+Acceptor.o: Acceptor.cc.o
+
+.PHONY : Acceptor.o
+
+# target to build an object file
+Acceptor.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/Acceptor.cc.o
+.PHONY : Acceptor.cc.o
+
+Acceptor.i: Acceptor.cc.i
+
+.PHONY : Acceptor.i
+
+# target to preprocess a source file
+Acceptor.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/Acceptor.cc.i
+.PHONY : Acceptor.cc.i
+
+Acceptor.s: Acceptor.cc.s
+
+.PHONY : Acceptor.s
+
+# target to generate assembly for a file
+Acceptor.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/Acceptor.cc.s
+.PHONY : Acceptor.cc.s
+
 Channel.o: Channel.cc.o
 
 .PHONY : Channel.o
@@ -530,6 +557,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... mymuduo"
+	@echo "... Acceptor.o"
+	@echo "... Acceptor.i"
+	@echo "... Acceptor.s"
 	@echo "... Channel.o"
 	@echo "... Channel.i"
 	@echo "... Channel.s"
