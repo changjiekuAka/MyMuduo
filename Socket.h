@@ -10,6 +10,8 @@ public:
     
     ~Socket();
     
+    int fd() const { return sockfd_; }
+
     void bind(const InetAddress& sockAddr);
     
     void listen();

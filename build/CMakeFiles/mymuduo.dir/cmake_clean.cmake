@@ -12,9 +12,11 @@ file(REMOVE_RECURSE
   "CMakeFiles/mymuduo.dir/InetAddress.cc.o"
   "CMakeFiles/mymuduo.dir/Poller.cc.o"
   "CMakeFiles/mymuduo.dir/Socket.cc.o"
+  "CMakeFiles/mymuduo.dir/TcpConnection.cc.o"
   "CMakeFiles/mymuduo.dir/TcpServer.cc.o"
   "CMakeFiles/mymuduo.dir/Thread.cc.o"
   "CMakeFiles/mymuduo.dir/Timestamp.cc.o"
+  "CMakeFiles/mymuduo.dir/buffer.cc.o"
   "CMakeFiles/mymuduo.dir/logger.cc.o"
 )
 

@@ -56,6 +56,11 @@
 },
 {
   "directory": "/home/kuaka/myMuduo/build",
+  "command": "/usr/bin/g++  -Dmymuduo_EXPORTS  -g -fPIC   -o CMakeFiles/mymuduo.dir/TcpConnection.cc.o -c /home/kuaka/myMuduo/TcpConnection.cc",
+  "file": "/home/kuaka/myMuduo/TcpConnection.cc"
+},
+{
+  "directory": "/home/kuaka/myMuduo/build",
   "command": "/usr/bin/g++  -Dmymuduo_EXPORTS  -g -fPIC   -o CMakeFiles/mymuduo.dir/TcpServer.cc.o -c /home/kuaka/myMuduo/TcpServer.cc",
   "file": "/home/kuaka/myMuduo/TcpServer.cc"
 },
@@ -68,6 +73,11 @@
   "directory": "/home/kuaka/myMuduo/build",
   "command": "/usr/bin/g++  -Dmymuduo_EXPORTS  -g -fPIC   -o CMakeFiles/mymuduo.dir/Timestamp.cc.o -c /home/kuaka/myMuduo/Timestamp.cc",
   "file": "/home/kuaka/myMuduo/Timestamp.cc"
+},
+{
+  "directory": "/home/kuaka/myMuduo/build",
+  "command": "/usr/bin/g++  -Dmymuduo_EXPORTS  -g -fPIC   -o CMakeFiles/mymuduo.dir/buffer.cc.o -c /home/kuaka/myMuduo/buffer.cc",
+  "file": "/home/kuaka/myMuduo/buffer.cc"
 },
 {
   "directory": "/home/kuaka/myMuduo/build",

@@ -15,9 +15,11 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/kuaka/myMuduo/InetAddress.cc" "/home/kuaka/myMuduo/build/CMakeFiles/mymuduo.dir/InetAddress.cc.o"
   "/home/kuaka/myMuduo/Poller.cc" "/home/kuaka/myMuduo/build/CMakeFiles/mymuduo.dir/Poller.cc.o"
   "/home/kuaka/myMuduo/Socket.cc" "/home/kuaka/myMuduo/build/CMakeFiles/mymuduo.dir/Socket.cc.o"
+  "/home/kuaka/myMuduo/TcpConnection.cc" "/home/kuaka/myMuduo/build/CMakeFiles/mymuduo.dir/TcpConnection.cc.o"
   "/home/kuaka/myMuduo/TcpServer.cc" "/home/kuaka/myMuduo/build/CMakeFiles/mymuduo.dir/TcpServer.cc.o"
   "/home/kuaka/myMuduo/Thread.cc" "/home/kuaka/myMuduo/build/CMakeFiles/mymuduo.dir/Thread.cc.o"
   "/home/kuaka/myMuduo/Timestamp.cc" "/home/kuaka/myMuduo/build/CMakeFiles/mymuduo.dir/Timestamp.cc.o"
+  "/home/kuaka/myMuduo/buffer.cc" "/home/kuaka/myMuduo/build/CMakeFiles/mymuduo.dir/buffer.cc.o"
   "/home/kuaka/myMuduo/logger.cc" "/home/kuaka/myMuduo/build/CMakeFiles/mymuduo.dir/logger.cc.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

@@ -60,7 +60,7 @@ void Socket::setTcpNoDelay(bool on)
     int optval = on ? 1 : 0;
     ::setsockopt(sockfd_,IPPROTO_TCP,TCP_NODELAY,&optval,sizeof optval);   
 }
-
+// ReusePort问题保留
 void Socket::setReuseAddr(bool on)
 {
     int optval = on ? 1 : 0;

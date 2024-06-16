@@ -440,6 +440,33 @@ Socket.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/Socket.cc.s
 .PHONY : Socket.cc.s
 
+TcpConnection.o: TcpConnection.cc.o
+
+.PHONY : TcpConnection.o
+
+# target to build an object file
+TcpConnection.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/TcpConnection.cc.o
+.PHONY : TcpConnection.cc.o
+
+TcpConnection.i: TcpConnection.cc.i
+
+.PHONY : TcpConnection.i
+
+# target to preprocess a source file
+TcpConnection.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/TcpConnection.cc.i
+.PHONY : TcpConnection.cc.i
+
+TcpConnection.s: TcpConnection.cc.s
+
+.PHONY : TcpConnection.s
+
+# target to generate assembly for a file
+TcpConnection.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/TcpConnection.cc.s
+.PHONY : TcpConnection.cc.s
+
 TcpServer.o: TcpServer.cc.o
 
 .PHONY : TcpServer.o
@@ -521,6 +548,33 @@ Timestamp.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/Timestamp.cc.s
 .PHONY : Timestamp.cc.s
 
+buffer.o: buffer.cc.o
+
+.PHONY : buffer.o
+
+# target to build an object file
+buffer.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/buffer.cc.o
+.PHONY : buffer.cc.o
+
+buffer.i: buffer.cc.i
+
+.PHONY : buffer.i
+
+# target to preprocess a source file
+buffer.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/buffer.cc.i
+.PHONY : buffer.cc.i
+
+buffer.s: buffer.cc.s
+
+.PHONY : buffer.s
+
+# target to generate assembly for a file
+buffer.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/buffer.cc.s
+.PHONY : buffer.cc.s
+
 logger.o: logger.cc.o
 
 .PHONY : logger.o
@@ -590,6 +644,9 @@ help:
 	@echo "... Socket.o"
 	@echo "... Socket.i"
 	@echo "... Socket.s"
+	@echo "... TcpConnection.o"
+	@echo "... TcpConnection.i"
+	@echo "... TcpConnection.s"
 	@echo "... TcpServer.o"
 	@echo "... TcpServer.i"
 	@echo "... TcpServer.s"
@@ -599,6 +656,9 @@ help:
 	@echo "... Timestamp.o"
 	@echo "... Timestamp.i"
 	@echo "... Timestamp.s"
+	@echo "... buffer.o"
+	@echo "... buffer.i"
+	@echo "... buffer.s"
 	@echo "... logger.o"
 	@echo "... logger.i"
 	@echo "... logger.s"

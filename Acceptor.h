@@ -1,3 +1,4 @@
+#pragma once
 #include "noncopyable.h"
 #include "Socket.h"
 #include "Channel.h"
@@ -10,9 +11,10 @@ class Acceptor : noncopyable
 {
 public:
     using NewConnectionCallBack =  std::function<void(int,const InetAddress&)>;
-    Acceptor(EventLoop* loop, const InetAddress& acceptAddr,bool reusePort);
+    Acceptor(EventLoop* loop, const InetAddress& listenAddr,bool reusePort);
     ~Acceptor();
 
+    void listen();
     void setNewConnectionCallBack(const NewConnectionCallBack& cb)
     {
         newConnectionCallBack_ = std::move(cb);
@@ -20,6 +22,8 @@ public:
 
     bool listenning() const { return listenning_;}
 private:
+    void handleRead();
+
     EventLoop* loop_;
     Socket acceptSocket_;
     Channel acceptChannnl_;
