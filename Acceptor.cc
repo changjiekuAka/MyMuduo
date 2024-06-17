@@ -40,6 +40,11 @@ void Acceptor::listen()
     acceptChannnl_.enableReading();
 }
 
+/*
+ *思考：在此处acceptor类负责新连接到来后，触发 返回connfd的回调函数，这里acceptor只知道当连接到来
+        需要去接收获得connfd，不知道后续的操作应该是什么，这些应该是由上层也就是TcpServer来定义的
+        这样就能做到各个模块之间透明，不知道对方会做什么，只做好自己相关的事情
+*/
 
 // 当listenfd监听到有新连接到来(读事件就绪)，调用handleRead ==>   accept   接收新链接
 void Acceptor::handleRead()

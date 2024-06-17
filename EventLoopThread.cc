@@ -6,7 +6,8 @@ EventLoopThread::EventLoopThread(const ThreadInitCallback& cb,const std::string&
     exiting_(false),
     thread_(std::bind(&EventLoopThread::threadFunc,this),name),
     mutex_(),
-    cond_()                            
+    cond_(),
+    callback_(cb)                            
 {
 
 }
@@ -42,7 +43,7 @@ void EventLoopThread::threadFunc()
 {
     EventLoop loop; //  创建一个独立的EventLoop，和上面的线程是一一对应的，One loop per thread
 
-    if(callback_) // 执行线程初始化回调操作
+    if(callback_) // 执行线程初始化回调操作，这里的参数由EventloopThreadPool在启动的时候传给EventloopThread
     {
         callback_(&loop);
     }

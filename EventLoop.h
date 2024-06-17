@@ -55,7 +55,11 @@ private:
     TimeStamp pollReturnTime_; // poller返回事件的Channel的时间点
     std::unique_ptr<Poller> poller_;
 
-    int wakeupfd_; // 主要作用唤醒subloop  使用函数eventfd()
+    /*
+        主要作用：mainloop获得一个新连接后，得到connfd，封装成Channel，分发给subloop，需要使用wakeupfd_，唤醒当前EventLoop
+        (注意：一个EventLoop只有一个Poller，会有多个Channel)，
+    */
+    int wakeupfd_; // 主要作用唤醒subloop  使用函数eventfd()创建wakeupfd
     std::unique_ptr<Channel> wakeupChannel_;
 
     ChannelList activeChannels_;

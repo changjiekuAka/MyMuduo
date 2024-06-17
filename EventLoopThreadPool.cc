@@ -17,6 +17,11 @@ EventLoopThreadPool::~EventLoopThreadPool()
 
 }
 
+/*
+    启动EventloopTheadPool的时候，底层每个EventloopThread已经创建好了一个线程，并在线程中创建了一个独立的
+    Eventloop，在执行完线程初始化回调(threadInitCallback)后，进入  EventLoop  ==>  loop   ==>  Poller.poll()  
+*/
+
 void EventLoopThreadPool::start(const ThreadInitCallBack& cb)
 {
     started_ = true;
