@@ -98,6 +98,7 @@ CMakeFiles/mymuduo.dir/Timestamp.cc.o
  /home/kuaka/myMuduo/Timestamp.h
 CMakeFiles/mymuduo.dir/buffer.cc.o
  /home/kuaka/myMuduo/buffer.cc
+ /home/kuaka/myMuduo/buffer.h
 CMakeFiles/mymuduo.dir/logger.cc.o
  /home/kuaka/myMuduo/Timestamp.h
  /home/kuaka/myMuduo/logger.cc

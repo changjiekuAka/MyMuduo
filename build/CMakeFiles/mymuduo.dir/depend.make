@@ -97,6 +97,7 @@ CMakeFiles/mymuduo.dir/Timestamp.cc.o: ../Timestamp.cc
 CMakeFiles/mymuduo.dir/Timestamp.cc.o: ../Timestamp.h
 
 CMakeFiles/mymuduo.dir/buffer.cc.o: ../buffer.cc
+CMakeFiles/mymuduo.dir/buffer.cc.o: ../buffer.h
 
 CMakeFiles/mymuduo.dir/logger.cc.o: ../Timestamp.h
 CMakeFiles/mymuduo.dir/logger.cc.o: ../logger.cc
