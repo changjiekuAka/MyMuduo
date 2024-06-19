@@ -127,6 +127,7 @@ public:
     {
         writerIndex_ += len;
     }
+    
     size_t readFd(int sockfd,int *saveErrno);
 private:
     char* begin() { return &*buffer_.begin(); }

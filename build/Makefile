@@ -170,6 +170,33 @@ Acceptor.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/Acceptor.cc.s
 .PHONY : Acceptor.cc.s
 
+Buffer.o: Buffer.cc.o
+
+.PHONY : Buffer.o
+
+# target to build an object file
+Buffer.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/Buffer.cc.o
+.PHONY : Buffer.cc.o
+
+Buffer.i: Buffer.cc.i
+
+.PHONY : Buffer.i
+
+# target to preprocess a source file
+Buffer.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/Buffer.cc.i
+.PHONY : Buffer.cc.i
+
+Buffer.s: Buffer.cc.s
+
+.PHONY : Buffer.s
+
+# target to generate assembly for a file
+Buffer.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/Buffer.cc.s
+.PHONY : Buffer.cc.s
+
 Channel.o: Channel.cc.o
 
 .PHONY : Channel.o
@@ -548,33 +575,6 @@ Timestamp.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/Timestamp.cc.s
 .PHONY : Timestamp.cc.s
 
-buffer.o: buffer.cc.o
-
-.PHONY : buffer.o
-
-# target to build an object file
-buffer.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/buffer.cc.o
-.PHONY : buffer.cc.o
-
-buffer.i: buffer.cc.i
-
-.PHONY : buffer.i
-
-# target to preprocess a source file
-buffer.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/buffer.cc.i
-.PHONY : buffer.cc.i
-
-buffer.s: buffer.cc.s
-
-.PHONY : buffer.s
-
-# target to generate assembly for a file
-buffer.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/buffer.cc.s
-.PHONY : buffer.cc.s
-
 logger.o: logger.cc.o
 
 .PHONY : logger.o
@@ -614,6 +614,9 @@ help:
 	@echo "... Acceptor.o"
 	@echo "... Acceptor.i"
 	@echo "... Acceptor.s"
+	@echo "... Buffer.o"
+	@echo "... Buffer.i"
+	@echo "... Buffer.s"
 	@echo "... Channel.o"
 	@echo "... Channel.i"
 	@echo "... Channel.s"
@@ -656,9 +659,6 @@ help:
 	@echo "... Timestamp.o"
 	@echo "... Timestamp.i"
 	@echo "... Timestamp.s"
-	@echo "... buffer.o"
-	@echo "... buffer.i"
-	@echo "... buffer.s"
 	@echo "... logger.o"
 	@echo "... logger.i"
 	@echo "... logger.s"

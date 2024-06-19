@@ -1,5 +1,6 @@
 #include "TcpServer.h"
 #include "logger.h"
+#include <functional>
 
 EventLoop* CheckLoopNotNull(EventLoop* loop)
 {
@@ -24,7 +25,8 @@ TcpServer::TcpServer(EventLoop* loop,
       messageCallback_(),
       nextConnId_(1)
 {
-
+    acceptor_->setNewConnectionCallBack(
+        std::bind(&TcpServer::newConnection,this,std::placeholders::_1,std::placeholders::_2));
 }
 
 TcpServer::~TcpServer()
@@ -44,4 +46,9 @@ void TcpServer::start()
         threadPool_->start(threadInitCallback_);
         loop_->runInLoop(std::bind(&Acceptor::listen,acceptor_.get()));
     }
+}
+
+void TcpServer::newConnection(int sockfd, const InetAddress& listenAddr)
+{
+
 }

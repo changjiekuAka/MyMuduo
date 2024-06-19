@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/kuaka/myMuduo/Acceptor.cc" "/home/kuaka/myMuduo/build/CMakeFiles/mymuduo.dir/Acceptor.cc.o"
+  "/home/kuaka/myMuduo/Buffer.cc" "/home/kuaka/myMuduo/build/CMakeFiles/mymuduo.dir/Buffer.cc.o"
   "/home/kuaka/myMuduo/Channel.cc" "/home/kuaka/myMuduo/build/CMakeFiles/mymuduo.dir/Channel.cc.o"
   "/home/kuaka/myMuduo/CurrentThread.cc" "/home/kuaka/myMuduo/build/CMakeFiles/mymuduo.dir/CurrentThread.cc.o"
   "/home/kuaka/myMuduo/DefaultPoller.cc" "/home/kuaka/myMuduo/build/CMakeFiles/mymuduo.dir/DefaultPoller.cc.o"
@@ -19,7 +20,6 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/kuaka/myMuduo/TcpServer.cc" "/home/kuaka/myMuduo/build/CMakeFiles/mymuduo.dir/TcpServer.cc.o"
   "/home/kuaka/myMuduo/Thread.cc" "/home/kuaka/myMuduo/build/CMakeFiles/mymuduo.dir/Thread.cc.o"
   "/home/kuaka/myMuduo/Timestamp.cc" "/home/kuaka/myMuduo/build/CMakeFiles/mymuduo.dir/Timestamp.cc.o"
-  "/home/kuaka/myMuduo/buffer.cc" "/home/kuaka/myMuduo/build/CMakeFiles/mymuduo.dir/buffer.cc.o"
   "/home/kuaka/myMuduo/logger.cc" "/home/kuaka/myMuduo/build/CMakeFiles/mymuduo.dir/logger.cc.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

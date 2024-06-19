@@ -10,6 +10,9 @@ CMakeFiles/mymuduo.dir/Acceptor.cc.o: ../Timestamp.h
 CMakeFiles/mymuduo.dir/Acceptor.cc.o: ../logger.h
 CMakeFiles/mymuduo.dir/Acceptor.cc.o: ../noncopyable.h
 
+CMakeFiles/mymuduo.dir/Buffer.cc.o: ../Buffer.cc
+CMakeFiles/mymuduo.dir/Buffer.cc.o: ../Buffer.h
+
 CMakeFiles/mymuduo.dir/Channel.cc.o: ../Channel.cc
 CMakeFiles/mymuduo.dir/Channel.cc.o: ../Channel.h
 CMakeFiles/mymuduo.dir/Channel.cc.o: ../CurrentThread.h
@@ -95,9 +98,6 @@ CMakeFiles/mymuduo.dir/Thread.cc.o: ../noncopyable.h
 
 CMakeFiles/mymuduo.dir/Timestamp.cc.o: ../Timestamp.cc
 CMakeFiles/mymuduo.dir/Timestamp.cc.o: ../Timestamp.h
-
-CMakeFiles/mymuduo.dir/buffer.cc.o: ../buffer.cc
-CMakeFiles/mymuduo.dir/buffer.cc.o: ../buffer.h
 
 CMakeFiles/mymuduo.dir/logger.cc.o: ../Timestamp.h
 CMakeFiles/mymuduo.dir/logger.cc.o: ../logger.cc
