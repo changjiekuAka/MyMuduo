@@ -1,13 +1,13 @@
 #include "Buffer.h"
 #include <sys/uio.h>
-
+#include <unistd.h>
 /*
     Poller工作在LT模式下
     从fd中读取流式数据，并不知道数据的大小，但缓冲区大小有限
     readv()函数十分重要，完美地处理这种场景，同样的还有writev()，值得学习
 */
 
-size_t Buffer::readFd(int sockfd,int *saveErrno)
+ssize_t Buffer::readFd(int sockfd,int *saveErrno)
 {   
     char extraBuf[65536] = {0};  // 开在栈上的空间 64K同时也是缓冲区的大小，Buffer缓冲区申请的空间在堆上面
 
@@ -33,6 +33,16 @@ size_t Buffer::readFd(int sockfd,int *saveErrno)
     {
         writerIndex_ = buffer_.size();
         append(extraBuf,n - writable);
+    }
+    return n;
+}
+
+ssize_t Buffer::writeFd(int sockfd,int *saveErrno)
+{
+    size_t n = ::write(sockfd,peek(),readableBytes());
+    if(n < 0)
+    {
+        *saveErrno = errno;
     }
     return n;
 }

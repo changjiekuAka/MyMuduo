@@ -128,7 +128,8 @@ public:
         writerIndex_ += len;
     }
     
-    size_t readFd(int sockfd,int *saveErrno);
+    ssize_t readFd(int sockfd,int *saveErrno);
+    ssize_t writeFd(int sockfd,int *saveErrno);
 private:
     char* begin() { return &*buffer_.begin(); }
     const char* begin() const { return &*buffer_.begin(); }

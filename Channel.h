@@ -7,7 +7,7 @@
 
 class EventLoop;
 /*
-*可能会报错，前置声明TimeStamp，用对象做参数，形参在想要调用构造函数的时候
+*[DEBUG]可能会报错，前置声明TimeStamp，用对象做参数，形参在想要调用构造函数的时候
 *会找不到构造函数报错
 */
 //class TimeStamp;

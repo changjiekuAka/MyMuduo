@@ -123,6 +123,7 @@ void EpollPoller::removeChannel(Channel* channel)
     channel->set_index(kNew);
 }
 
+/*!!!!!*/
 void EpollPoller::update(int operation,Channel* channel)
 {
     epoll_event event;
@@ -145,7 +146,12 @@ void EpollPoller::update(int operation,Channel* channel)
         }
     }
 }
-
+// 当epoll_wait返回后，用此函数填写，活跃的Channel(fd)
+/*
+    解释：调用epoll_ctl，添加events时，往结构体中的ptr参数赋值的是对应Channel的指针
+    当有事件发生时，epoll_wait返回，得到发生事件的events数组，得到发生事件的Channel，
+    调用Channel中设置的对应回调函数
+*/
 void EpollPoller::fillActiveChannnels(int numEvents,ChannelList* activeChannel)
 {
     for(int i = 0 ; i < numEvents ; i++)

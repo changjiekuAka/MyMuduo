@@ -76,7 +76,18 @@ CMakeFiles/mymuduo.dir/Socket.cc.o
  /home/kuaka/myMuduo/logger.h
  /home/kuaka/myMuduo/noncopyable.h
 CMakeFiles/mymuduo.dir/TcpConnection.cc.o
+ /home/kuaka/myMuduo/Buffer.h
+ /home/kuaka/myMuduo/CallBack.h
+ /home/kuaka/myMuduo/Channel.h
+ /home/kuaka/myMuduo/CurrentThread.h
+ /home/kuaka/myMuduo/EventLoop.h
+ /home/kuaka/myMuduo/InetAddress.h
+ /home/kuaka/myMuduo/Socket.h
  /home/kuaka/myMuduo/TcpConnection.cc
+ /home/kuaka/myMuduo/TcpConnection.h
+ /home/kuaka/myMuduo/Timestamp.h
+ /home/kuaka/myMuduo/logger.h
+ /home/kuaka/myMuduo/noncopyable.h
 CMakeFiles/mymuduo.dir/TcpServer.cc.o
  /home/kuaka/myMuduo/Acceptor.h
  /home/kuaka/myMuduo/CallBack.h
