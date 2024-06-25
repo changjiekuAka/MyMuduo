@@ -93,9 +93,13 @@ void TcpConnection::handleWrite()
                     loop_->queueInLoop(std::bind(writeCompleteCallback_, shared_from_this()));
                     //writeCompleteCallback_(shared_from_this());
                 }
-                if(state_ == kDisconnecting)
+                /*
+                    可能handleWrite在写数据的时候，会被shutdown掉，shutdown会将state_设置为kDisconnecting
+
+                */
+                if(state_ == kDisconnecting) // 此处的判断和shutdown函数紧密相连
                 {
-                    shutdownInLoop();
+                    shutdownInLoop(); 
                 }
             }
         }
@@ -226,4 +230,48 @@ void TcpConnection::sendInLoop(const void *data,size_t len)
         }
     }
     
+}
+
+void TcpConnection::connectEstablished()
+{
+    setState(kConnecting);
+    // 绑定Channel和TcpConnection
+    channel_->tie(shared_from_this());
+    channel_->enableReading();
+
+    connectionCallback_(shared_from_this());
+} 
+
+void TcpConnection::connectDestroyed()
+{
+    if(state_ == kConnected)
+    {
+        setState(kDisconnected);
+        channel_->disableAll();
+        connectionCallback_(shared_from_this());
+    }
+    channel_->remove();
+}
+
+void TcpConnection::shutdown()
+{
+    if(state_ == kConnected)
+    {
+        setState(kDisconnecting); // 这里与handleWrite处理缓冲区数据时有关
+        loop_->runInLoop(std::bind(&TcpConnection::shutdownInLoop,this));
+    }
+}
+
+/*
+    如果缓冲区中还有数据，就不会进行shutdownWrite操作，也不用担心shutdown不了，调用shutdown函数，
+    就会把TcpConnection的state_设置为kDisconnecting，只要缓冲区的数据写完后，
+    就会进入if(readableBytes == 0) 的语句中，这时就会检测到state_已经变化，调用shutdownInLoop
+*/
+
+void TcpConnection::shutdownInLoop()
+{
+    if(!channel_->isWriting()) 
+    {
+        socket_->shutdownWrite();
+    }
 }

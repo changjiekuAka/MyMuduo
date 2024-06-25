@@ -29,6 +29,7 @@ Channel::~Channel()
 
 /*
   现在还不知到哪里会调用tie函数
+  TcpConnection:: ConnectionEstabish 中会调用此函数，将channnel和指向TcpConnection的shared_ptr绑定
 */
 void Channel::tie(const std::shared_ptr<void> &obj)
 {

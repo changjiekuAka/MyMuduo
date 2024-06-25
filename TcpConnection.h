@@ -42,6 +42,11 @@ public:
     // Muduo库还有其他的数据格式，这里就用先用string
     void send(const std::string& buf);
 
+    void connectEstablished();
+    void connectDestroyed();
+
+    void shutdown();
+
 private:
     enum StateE { kDisconnected , kConnecting , kConnected , kDisconnecting };
 
