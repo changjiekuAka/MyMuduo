@@ -33,6 +33,7 @@ Acceptor::~Acceptor()
     acceptChannnl_.remove();
 }
 
+// 启动套接字监听和对读事件感兴趣 
 void Acceptor::listen()
 {
     listenning_ = true;

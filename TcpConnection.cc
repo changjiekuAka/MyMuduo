@@ -23,10 +23,10 @@ TcpConnection::TcpConnection(EventLoop* loop,
     reading(true),
     state_(kConnecting),
     socket_(new Socket(sockfd)),
-    channel_(new Channel(loop_,sockfd)),
-    localAddr_(localAddr),
-    peerAddr_(peerAddr),
-    highWaterMark_(64*1024*1024)   // 64M
+    channel_(new Channel(loop_,sockfd)), //ioLoop,注意不要忘记一个Channel对应一个EventLoop
+    localAddr_(localAddr),                      /* 思考：channel在初始化的时候就会指定好自己所属的EventLoop */
+    peerAddr_(peerAddr),                        /*       在后面调用channel的enableReading之类的函数，就会在*/
+    highWaterMark_(64*1024*1024)   // 64M       /*       EventLoop创建的Poller中进行注册                  */
 {
     // 给sockfd的Channel设置相关的回调，Poller通知Channel，Channel会调用相应的回调(handleEvent)
     channel_->setWriteCallback(
@@ -231,7 +231,7 @@ void TcpConnection::sendInLoop(const void *data,size_t len)
     }
     
 }
-
+// 调用在TcpServer接收一个新连接的时候，只会调用一次    
 void TcpConnection::connectEstablished()
 {
     setState(kConnecting);
@@ -241,7 +241,7 @@ void TcpConnection::connectEstablished()
 
     connectionCallback_(shared_from_this());
 } 
-
+// 调用在TcpServer将一个TcpConnection从一个Map中消除掉
 void TcpConnection::connectDestroyed()
 {
     if(state_ == kConnected)
@@ -272,6 +272,6 @@ void TcpConnection::shutdownInLoop()
 {
     if(!channel_->isWriting()) 
     {
-        socket_->shutdownWrite();
+        socket_->shutdownWrite(); //关闭写端,这里会触发Poller监听的EPOLLHUP事件，同时调用注册的回调handleClose
     }
 }

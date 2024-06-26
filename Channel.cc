@@ -60,7 +60,7 @@ void Channel::handleEvent(TimeStamp receivetime)
   // 调用过tie函数才会执行下面的步骤
   if (tied_)
   {
-    // 升级为强指针
+    // 升级为强指针，检测指向TcpConnection的shared_ptr是否还存在
     std::shared_ptr<void> guard = tie_.lock();
     if (guard)
     {
@@ -79,7 +79,7 @@ void Channel::handleEventWithGuard(TimeStamp receiveTime)
   LOG_INFO("Channel handleEvent revents:%d",revents_);
   eventHandling_ = true;
   // EPOLLPRI 紧急带外数据
-  if(revents_ & EPOLLPRI && !(revents_ & EPOLLIN)){
+  if(revents_ & EPOLLHUP && !(revents_ & EPOLLIN)){
     if(closeCallback_) closeCallback_();
   }
   if(revents_ & EPOLLERR){

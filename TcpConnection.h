@@ -77,6 +77,8 @@ private:
     CloseCallback closeCallback_;
 
     size_t highWaterMark_;
+    
+    // 每个TcpConnection都有发送缓冲区和接收缓冲区
     Buffer inputBuffer_;
     Buffer outputBuffer_;
 

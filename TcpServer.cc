@@ -41,7 +41,7 @@ void TcpServer::setThreadNum(int numThreads)
 
 void TcpServer::start()
 {
-    if(started_++ == 0)
+    if(started_++ == 0) // 使用原子变量保证TcpServer只能启动一次
     {
         threadPool_->start(threadInitCallback_);
         loop_->runInLoop(std::bind(&Acceptor::listen,acceptor_.get()));
