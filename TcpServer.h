@@ -4,6 +4,8 @@
 #include "Acceptor.h"
 #include "EventLoopThreadPool.h"
 #include "EventLoop.h"
+#include "TcpConnection.h"
+#include "Buffer.h"
 /*
     在平常使用Muduo库时，使用Tcpserver还需要包含以上的头文件，就使用体验上不是很好，但这
     样会暴露更多的接口，这里为了使用方便就直接包含
