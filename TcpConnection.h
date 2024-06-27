@@ -38,6 +38,8 @@ public:
     { writeCompleteCallback_ = cb; }
     void setHighWaterMarkCallback(const HighWaterMarkCallback& cb)
     { highWaterMarkCallback_ = cb; }
+    void setCloseCallback(const CloseCallback& cb)
+    { closeCallback_ = cb; }
 
     // Muduo库还有其他的数据格式，这里就用先用string
     void send(const std::string& buf);

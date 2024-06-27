@@ -6,20 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/kuaka/myMuduo/Acceptor.cc
-Acceptor.h
-/home/kuaka/myMuduo/Acceptor.h
-logger.h
-/home/kuaka/myMuduo/logger.h
-InetAddress.h
-/home/kuaka/myMuduo/InetAddress.h
-sys/socket.h
--
-sys/types.h
--
-unistd.h
--
-
 /home/kuaka/myMuduo/Acceptor.h
 noncopyable.h
 /home/kuaka/myMuduo/noncopyable.h
@@ -49,20 +35,6 @@ memory
 -
 Timestamp.h
 /home/kuaka/myMuduo/Timestamp.h
-
-/home/kuaka/myMuduo/Channel.cc
-Channel.h
-/home/kuaka/myMuduo/Channel.h
-EventLoop.h
-/home/kuaka/myMuduo/EventLoop.h
-logger.h
-/home/kuaka/myMuduo/logger.h
-sstream
--
-sys/epoll.h
--
-assert.h
--
 
 /home/kuaka/myMuduo/Channel.h
 noncopyable.h
@@ -153,7 +125,11 @@ TcpServer.h
 /home/kuaka/myMuduo/TcpServer.h
 logger.h
 /home/kuaka/myMuduo/logger.h
+TcpConnection.h
+/home/kuaka/myMuduo/TcpConnection.h
 functional
+-
+string.h
 -
 
 /home/kuaka/myMuduo/TcpServer.h

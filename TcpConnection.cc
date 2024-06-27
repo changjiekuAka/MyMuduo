@@ -119,6 +119,7 @@ void TcpConnection::handleClose()
     channel_->disableAll();
     setState(kDisconnected);
     TcpConnectionPtr guardThis(shared_from_this());
+    // 这些都是由TcpServer传递conn的
     connectionCallback_(guardThis); // 执行连接关闭的回调
     closeCallback_(guardThis); // 执行关闭连接的回调
 }
