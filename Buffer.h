@@ -81,9 +81,9 @@ public:
         writerIndex_ = kCheapPrepend;
     }
 
-    void retrieveAllAsString()
+    std::string retrieveAllAsString()
     {
-        retrieveAsString(readableBytes());
+        return retrieveAsString(readableBytes());
     }
 
     std::string retrieveAsString(size_t len)

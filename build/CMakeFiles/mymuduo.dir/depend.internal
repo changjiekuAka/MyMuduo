@@ -26,6 +26,7 @@ CMakeFiles/mymuduo.dir/CurrentThread.cc.o
  /home/kuaka/myMuduo/CurrentThread.h
 CMakeFiles/mymuduo.dir/DefaultPoller.cc.o
  /home/kuaka/myMuduo/DefaultPoller.cc
+ /home/kuaka/myMuduo/EpollPoller.h
  /home/kuaka/myMuduo/Poller.h
  /home/kuaka/myMuduo/Timestamp.h
  /home/kuaka/myMuduo/noncopyable.h

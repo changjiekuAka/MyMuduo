@@ -76,7 +76,7 @@ void TcpConnection::handleWrite()
     if(channel_->isWriting())
     {
         int saveErrno = 0;
-        ssize_t n = outputBuffer_.writeFd(socket_->fd(),&saveErrno);
+        ssize_t n = outputBuffer_.writeFd(channel_->fd(),&saveErrno);
         if(n > 0)
         {
             outputBuffer_.retrieve(n);
@@ -120,7 +120,7 @@ void TcpConnection::handleClose()
     setState(kDisconnected);
     TcpConnectionPtr guardThis(shared_from_this());
     // 这些都是由TcpServer传递conn的
-    connectionCallback_(guardThis); // 执行连接关闭的回调
+    connectionCallback_(guardThis); // 执行连接关闭时用户想要的回调
     closeCallback_(guardThis); // 执行关闭连接的回调
 }
 
@@ -187,7 +187,7 @@ void TcpConnection::sendInLoop(const void *data,size_t len)
         nwrote = ::write(channel_->fd(),data,len);
         if(nwrote > 0)
         {
-            remaining -= nwrote;
+            remaining = len - nwrote;
             if(remaining == 0 && highWaterMarkCallback_)
             {
                 loop_->runInLoop(std::bind(writeCompleteCallback_,shared_from_this()));

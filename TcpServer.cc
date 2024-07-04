@@ -25,7 +25,8 @@ TcpServer::TcpServer(EventLoop* loop,
       threadPool_(new EventLoopThreadPool(loop_,name_)),
       connectionCallback_(),
       messageCallback_(),
-      nextConnId_(1)
+      nextConnId_(1),
+      started_(0)
 {
     acceptor_->setNewConnectionCallBack(
         std::bind(&TcpServer::newConnection,this,std::placeholders::_1,std::placeholders::_2));
@@ -79,6 +80,12 @@ void TcpServer::newConnection(int sockfd, const InetAddress& peerAddr)
     } 
 
     InetAddress localAddr(local);
+    /*
+        创建一个连接(TcpConnection)时，也会创建它对应Channel，Channel在创建的时候，会指定自身
+        所属的loop，在这里接收新连接后，选择了一个subLoop，把这个subLoop作为创建TcpConnection的参数
+        也就是为subLoop中的添加了一个新的Channel，也可以说是把这个新连接分配到了subLoop中
+    */ 
+
     TcpConnectionPtr conn(new TcpConnection(ioLoop,
                                 connName,
                                 sockfd,

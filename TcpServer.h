@@ -6,6 +6,7 @@
 #include "EventLoop.h"
 #include "TcpConnection.h"
 #include "Buffer.h"
+#include "InetAddress.h"
 /*
     在平常使用Muduo库时，使用Tcpserver还需要包含以上的头文件，就使用体验上不是很好，但这
     样会暴露更多的接口，这里为了使用方便就直接包含
@@ -54,7 +55,7 @@ private:
     const std::string ipPort_;
     std::unique_ptr<Acceptor> acceptor_;
     std::shared_ptr<EventLoopThreadPool> threadPool_; // One loop per thread
-    ConnectionCallback connectionCallback_; //  有新连接到来的回调
+    ConnectionCallback connectionCallback_; //  有新连接到来、连接关闭的回调，需要用户定义的
     MessageCallback messageCallback_; //  有读写消息的回调
     WriteCompleteCallback writeCompleteCallback_;  //  消息发送完成的回调
 

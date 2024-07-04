@@ -14,6 +14,7 @@ const int kPollTimeMs = 10000;
 
 int createEventfd()
 {
+    
     int evtfd = ::eventfd(0,EFD_NONBLOCK | EFD_CLOEXEC);
     if(evtfd < 0)
     {
@@ -31,7 +32,7 @@ EventLoop::EventLoop()
     wakeupfd_(createEventfd()),
     wakeupChannel_(new Channel(this,wakeupfd_))
 {
-    LOG_DEBUG("EventLoop create %p in thread %d",this,threadId_);
+    LOG_INFO("EventLoop create %p in thread %d",this,threadId_);
     if(t_loopInThisThread)
     {
         LOG_FATAL("Another Eventloop %p exists in this thread %d\n",t_loopInThisThread,threadId_);
@@ -76,6 +77,7 @@ void EventLoop::loop()
     looping_ = true;
     quit_ = false;
 
+    LOG_INFO("EventLoop %p start looping \n", this);
     while(!quit_)
     {
         activeChannels_.clear();
@@ -83,6 +85,7 @@ void EventLoop::loop()
             不断获取是否有事件发生
             监听两种fd    一种是client的fd    一种是wakeupfd   正如上面所说的监听wakeupfd的目的
         */
+
         pollReturnTime_ = poller_->Poll(kPollTimeMs,&activeChannels_);
         
         for(Channel* channel:activeChannels_)
@@ -101,6 +104,9 @@ void EventLoop::loop()
         */
         doPendingFunctors();
     }
+
+    LOG_INFO("EventLoop %p stop looping. \n", this);
+    looping_ = false;
 }
 // 执行委派的回调函数
 void EventLoop::doPendingFunctors()

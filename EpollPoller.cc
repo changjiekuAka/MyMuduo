@@ -29,7 +29,8 @@ EpollPoller::~EpollPoller()
 TimeStamp EpollPoller::Poll(int timeoutMs,ChannelList* activeChannel)
 {
     // 这里用DEBUG更合适
-    LOG_INFO("FUNC=%s => fd total count:%d\n",channels_.size());
+        LOG_INFO("func=%s => fd total count:%lu \n", __FUNCTION__, channels_.size());
+
     int numEvents = ::epoll_wait(epollfd_,
                                 &*events_.begin(),
                                 static_cast<int>(events_.size()),
@@ -40,6 +41,7 @@ TimeStamp EpollPoller::Poll(int timeoutMs,ChannelList* activeChannel)
     int saveErrno = errno;
     if(numEvents > 0)
     {
+        LOG_INFO("%d events happened \n", numEvents);
         fillActiveChannnels(numEvents,activeChannel);
         if(numEvents == static_cast<int>(events_.size()))
         {
@@ -127,7 +129,7 @@ void EpollPoller::removeChannel(Channel* channel)
 void EpollPoller::update(int operation,Channel* channel)
 {
     epoll_event event;
-    memset(&event,0,sizeof event);
+    ::bzero(&event, sizeof event);
     int fd = channel->fd();
     // 填写epoll_event
     event.events = channel->events();
@@ -154,7 +156,7 @@ void EpollPoller::update(int operation,Channel* channel)
 */
 void EpollPoller::fillActiveChannnels(int numEvents,ChannelList* activeChannel)
 {
-    for(int i = 0 ; i < numEvents ; i++)
+    for(int i = 0 ; i < numEvents ; ++i)
     {
         Channel* channel = static_cast<Channel*>(events_[i].data.ptr);
         channel->set_revents(events_[i].events);

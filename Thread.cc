@@ -51,7 +51,7 @@ void Thread::setDefaultName()
     int num = ++numCreated_;
     if(name_.empty())
     {
-        char buf[128] = {0};
+        char buf[32] = {0};
         snprintf(buf,sizeof buf,"Thread%d",num);
         name_ = buf;
     }

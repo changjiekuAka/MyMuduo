@@ -1,5 +1,6 @@
 #include "EventLoopThread.h"
 #include "EventLoop.h"
+#include <iostream>
 
 EventLoopThread::EventLoopThread(const ThreadInitCallback& cb,const std::string& name)
     :loop_(nullptr),
@@ -53,7 +54,7 @@ void EventLoopThread::threadFunc()
         loop_ = &loop;
         cond_.notify_one();
     }
-
+    
     loop.loop(); // EventLoop ==> poll()
     std::unique_lock<std::mutex> lock(mutex_);
     loop_ = nullptr;
