@@ -43,6 +43,7 @@ TimeStamp EpollPoller::Poll(int timeoutMs,ChannelList* activeChannel)
     {
         LOG_INFO("%d events happened \n", numEvents);
         fillActiveChannnels(numEvents,activeChannel);
+        LOG_INFO("SUCCESS\n");
         if(numEvents == static_cast<int>(events_.size()))
         {
             events_.resize(events_.size() * 2);
@@ -135,7 +136,7 @@ void EpollPoller::update(int operation,Channel* channel)
     event.events = channel->events();
     event.data.ptr = channel;
     event.data.fd = fd;
-
+    LOG_INFO("func: %s sockfd : %d channel = %p",__FUNCTION__,fd,event.data.ptr);
     if(::epoll_ctl(epollfd_,operation,fd,&event) < 0)
     {
         if(operation == EPOLL_CTL_DEL)
@@ -154,11 +155,16 @@ void EpollPoller::update(int operation,Channel* channel)
     当有事件发生时，epoll_wait返回，得到发生事件的events数组，得到发生事件的Channel，
     调用Channel中设置的对应回调函数
 */
-void EpollPoller::fillActiveChannnels(int numEvents,ChannelList* activeChannel)
+void EpollPoller::fillActiveChannnels(int numEvents,ChannelList* activeChannel) const
 {
     for(int i = 0 ; i < numEvents ; ++i)
     {
         Channel* channel = static_cast<Channel*>(events_[i].data.ptr);
+        
+        std::cout<<events_[i].events;
+        LOG_INFO("%d",events_[i].events);
+        std::cout<<channel;
+        std::cout<<channel->fd();
         channel->set_revents(events_[i].events);
         activeChannel->push_back(channel);
     }

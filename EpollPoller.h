@@ -16,7 +16,7 @@ public:
 private:
     static const int kInitEventListSize = 16;
     // 填写活跃的连接
-    void fillActiveChannnels(int numEvents,ChannelList* activeChannel);
+    void fillActiveChannnels(int numEvents,ChannelList* activeChannel) const;
     // 更新Channel通道
     void update(int operation,Channel* channel);
 

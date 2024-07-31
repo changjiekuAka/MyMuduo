@@ -79,13 +79,13 @@ void Channel::handleEventWithGuard(TimeStamp receiveTime)
   LOG_INFO("Channel handleEvent revents:%d",revents_);
   eventHandling_ = true;
   // EPOLLPRI 紧急带外数据
-  if(revents_ & EPOLLHUP && !(revents_ & EPOLLIN)){
+  if((revents_ & EPOLLHUP) && !(revents_ & EPOLLIN)){
     if(closeCallback_) closeCallback_();
   }
   if(revents_ & EPOLLERR){
     if(errorCallback_) errorCallback_();
   }
-  if(revents_ & (EPOLLIN | EPOLLRDHUP | EPOLLPRI)){
+  if(revents_ & (EPOLLIN | EPOLLPRI)){
     if(readCallback_) readCallback_(receiveTime);
   }
   if(revents_ & EPOLLOUT){

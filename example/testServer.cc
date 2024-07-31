@@ -27,7 +27,7 @@ public:
                         std::placeholders::_2,std::placeholders::_3)
         );
 
-        server_.setThreadNum(3);
+        //server_.setThreadNum(3);
     }
     ~echoServer()
     {

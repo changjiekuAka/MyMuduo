@@ -18,11 +18,11 @@ static int createNonblocking()
 Acceptor::Acceptor(EventLoop* loop,const InetAddress& listenAddr,bool reusePort)
     :loop_(loop),
     acceptSocket_(createNonblocking()),
-    acceptChannnl_(loop_,acceptSocket_.fd()),
+    acceptChannnl_(loop,acceptSocket_.fd()),
     listenning_(false)
 {
     acceptSocket_.setReuseAddr(true);
-    acceptSocket_.setReusePort(true);
+    acceptSocket_.setReusePort(reusePort);
     acceptSocket_.bind(listenAddr);
     acceptChannnl_.setReadCallback(std::bind(&Acceptor::handleRead,this));
 }
@@ -54,6 +54,7 @@ void Acceptor::handleRead()
     int connfd = acceptSocket_.accept(&peerAddr);
     if(connfd >= 0)
     {
+        LOG_INFO("1111\n");
         if(newConnectionCallBack_)
         {
             newConnectionCallBack_(connfd,peerAddr);

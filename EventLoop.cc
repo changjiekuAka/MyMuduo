@@ -16,6 +16,7 @@ int createEventfd()
 {
     
     int evtfd = ::eventfd(0,EFD_NONBLOCK | EFD_CLOEXEC);
+    LOG_INFO("wakeupfd : %d\n",evtfd);
     if(evtfd < 0)
     {
         LOG_FATAL("Failed in eventfd");
@@ -87,7 +88,7 @@ void EventLoop::loop()
         */
 
         pollReturnTime_ = poller_->Poll(kPollTimeMs,&activeChannels_);
-        
+        LOG_INFO("2222\n");
         for(Channel* channel:activeChannels_)
         {
             // handleEvent函数是根据发生的事件类型(EPOLLIN EPOLLOUT)，来调用事先预设好的对应事件的回调操作
